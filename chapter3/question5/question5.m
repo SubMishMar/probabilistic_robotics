@@ -20,7 +20,7 @@ r = [4; 0.01; 0.01];
 %r = zeros(3, 1);
 R = diag(r.^2);
 
-q = [9; 0.01; 0.01];
+q = [1; 0.01; 0.01];
 %q = zeros(3, 1);
 Q = diag(r.^2);
 
@@ -30,7 +30,7 @@ XTRUE = [XTRUE, XTruet];
 X = [];
 X = [X, Xt];
 
-tend = 1000;
+tend = 10;
 for i = 1:tend
     XTruet = Anewt*XTruet + Bnewt*ut + [r(1);0;0].*randn(3, 1);
     ZTrue = Cnewt*XTruet + [q(1);0;0].*randn(3, 1);
