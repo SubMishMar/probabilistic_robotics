@@ -1,4 +1,4 @@
-function q = move(p, U)
+function q = move_exact(p, U)
     
     if(U == length(p) || U == -length(p))
         q = p;
@@ -16,4 +16,5 @@ function q = move(p, U)
             p = q;
         end
     end
+    q = q/sum(q);
 end
