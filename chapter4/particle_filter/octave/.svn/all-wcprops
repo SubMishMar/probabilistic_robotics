@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave
+END
+mean_position.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/mean_position.m
+END
+read_data.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/read_data.m
+END
+test_measurement_model.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/test_measurement_model.m
+END
+measurement_model.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/measurement_model.m
+END
+sample_motion_model.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/sample_motion_model.m
+END
+initialize_particles.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/initialize_particles.m
+END
+particle_filter.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/particle_filter.m
+END
+resample.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/resample.m
+END
+plot_state.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/plot_state.m
+END
+average_angle.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/average_angle.m
+END
+read_world.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/lecturematerial-robotics/!svn/ver/216/ss11/exercises/06/stub/octave/read_world.m
+END
