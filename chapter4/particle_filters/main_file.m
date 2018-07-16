@@ -41,15 +41,19 @@ population_theta = 0:0.001:360;
 X_samples = [randsample(population, N, true); 
              randsample(population, N, true); 
              randsample(population_theta, N, true)];
-
+         
+% Can Randomly set the initial point or choose fixed values
 x_true = [randsample(population, 1, true);
           randsample(population, 1, true); 
           randsample(population_theta, 1, true)];
-
+% x_true = zeros(3, 1);
+% x_true = [50;50;0];
 figure(1);   
 for i = 1:no_of_iterations
     if i==1
+        disp('Paused for 2 seconds..');
         plot_file(landmark_locations, x_true, X_samples, 2);
+        disp('Running...');
     else
         plot_file(landmark_locations, x_true, X_samples, 0.1);
     end
@@ -89,7 +93,7 @@ for i = 1:no_of_iterations
     
     X_samples = X_samples_temp;
 end
-
+disp('Exited');
 
 
 
