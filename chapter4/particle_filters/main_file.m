@@ -26,7 +26,7 @@ sensor_noise = 10.0; % std/not variance!
 
 no_of_iterations = 1000;
 delP = 1;
-delOmega = 0*pi/180;
+delOmega = 5*pi/180;
 control_ip = [delP; delOmega];
 
 
@@ -110,7 +110,7 @@ for i = 1:no_of_iterations
                                 'MarkerFaceColor',[0,0,1])
     hold on;
     plot(x_true(1), x_true(2),'o',...
-                                'MarkerSize',5,...
+                                'MarkerSize',10,...
                                 'MarkerEdgeColor','r',...
                                 'MarkerFaceColor',[1,0,0]);
     hold off;
