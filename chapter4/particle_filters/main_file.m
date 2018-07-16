@@ -3,8 +3,8 @@ close all;
 clc;
 
 disp('Basic Implementation of Particle Filter for Robot Localization');
-disp('The filter does not always converge to the correct solution')
-disp('So re run the code if it doesnt converge to the truth');
+disp('The filter may not always converge to the correct solution')
+disp('So try changing the no of particles[preferably increasing it]');
 %% world parameters 
 
 world_size = 100;
@@ -24,7 +24,7 @@ sensor_noise = 10.0; % std/not variance!
 
 %% robot initialization
 
-no_of_iterations = 1000;
+no_of_iterations = 500;
 delP = 1;
 delOmega = 5*pi/180;
 control_ip = [delP; delOmega];
@@ -33,7 +33,7 @@ control_ip = [delP; delOmega];
 %% Particle Filter
 % Note that the only thing accecible to the particle filter is
 % the measurement z_true and control_ip
-N = 1000; % No of particles
+N = 10000; % No of particles
 
 population = 0:0.001:world_size;
 population_theta = 0:0.001:360;
@@ -46,10 +46,16 @@ x_true = [randsample(population, 1, true);
           randsample(population, 1, true); 
           randsample(population_theta, 1, true)];
 
-figure(1);
+figure(1);   
 for i = 1:no_of_iterations
+    if i==1
+        plot_file(landmark_locations, x_true, X_samples, 2);
+    else
+        plot_file(landmark_locations, x_true, X_samples, 0.1);
+    end
     x_true = move(x_true, control_ip, control_noise, world_size);
     z_true = sense(x_true, landmark_locations, sensor_noise);
+    prob = zeros(1, N);
     for j = 1:N
         
         X_samples(:,j) = move(X_samples(:,j), control_ip, control_noise, world_size);
@@ -82,44 +88,6 @@ for i = 1:no_of_iterations
     end
     
     X_samples = X_samples_temp;
-    
-    measurement_lineAx = linspace(landmark_locations(1,1), x_true(1), 100);
-    measurement_lineAy = linspace(landmark_locations(1,2), x_true(2), 100);
-    measurement_lineBx = linspace(landmark_locations(2,1), x_true(1), 100);
-    measurement_lineBy = linspace(landmark_locations(2,2), x_true(2), 100);
-    measurement_lineCx = linspace(landmark_locations(3,1), x_true(1), 100);
-    measurement_lineCy = linspace(landmark_locations(3,2), x_true(2), 100);
-    measurement_lineDx = linspace(landmark_locations(4,1), x_true(1), 100);
-    measurement_lineDy = linspace(landmark_locations(4,2), x_true(2), 100);
-    plot(measurement_lineAx, measurement_lineAy, '--r');
-    hold on;
-    plot(measurement_lineBx, measurement_lineBy, '--r');
-    hold on;
-    plot(measurement_lineCx, measurement_lineCy, '--r');
-    hold on;
-    plot(measurement_lineDx, measurement_lineDy, '--r');
-    hold on;
-    plot(landmark_locations(:,1), landmark_locations(:,2),'s',...
-                                'MarkerSize',25,...
-                                'MarkerEdgeColor','r',...
-                                'MarkerFaceColor',[0,1,0])
-    hold on;
-    plot(X_samples(1,:), X_samples(2,:),'o',...
-                                'MarkerSize',1,...
-                                'MarkerEdgeColor','b',...
-                                'MarkerFaceColor',[0,0,1])
-    hold on;
-    plot(x_true(1), x_true(2),'o',...
-                                'MarkerSize',10,...
-                                'MarkerEdgeColor','r',...
-                                'MarkerFaceColor',[1,0,0]);
-    hold off;
-    prob = zeros(1, N);
-    axis square;
-    xlim([0 100]);
-    ylim([0 100]);
-    grid;
-    pause(0.1);   
 end
 
 
