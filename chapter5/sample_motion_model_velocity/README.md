@@ -1,6 +1,7 @@
 Implementation of a velocity motion model with sampling. The figures below show effects of translational and rotational noises.
 
 alpha1 and alpha2: Translational noise
+
 alpha3 and alpha4: Rotational noise
 
 1. Lower Translational Noise and Higher Rotational Noise
