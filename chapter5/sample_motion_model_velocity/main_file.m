@@ -13,7 +13,8 @@ for i = 1:no_of_iterations
     Xt = [Xt; sample_motion_model_velocity(ut, Xt_1, delT, alphas, which_dist)'];
 end
 figure(1);
-plot(Xt(:, 1), Xt(:, 2), '.r');
+plot3(Xt(:, 1), Xt(:, 2),...
+    zeros(length(Xt), 1), '.r');
 xlim([-15, 15]);
 ylim([-15, 15]);
 axis square;

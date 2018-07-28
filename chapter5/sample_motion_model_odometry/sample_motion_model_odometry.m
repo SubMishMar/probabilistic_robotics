@@ -1,4 +1,4 @@
-function Xdash = sample_motion_model_odometry(X, Ut, alphas, which_dist)
+function Xdash = sample_motion_model_odometry(X, Xbar, Xdashbar, alphas, which_dist)
     % which_dist: 0 for normal dist sampling 1 for triangular
     alpha1 = alphas(1);
     alpha2 = alphas(2);
@@ -7,11 +7,15 @@ function Xdash = sample_motion_model_odometry(X, Ut, alphas, which_dist)
     
     x = X(1);
     y = X(2);
-    theta = mod(X(3), 2*pi);
+    theta = X(3);
     
-    delRot1 = Ut(1);
-    delRot2 = Ut(2);
-    delTrans = Ut(3);
+    xbar = Xbar(1); xdashbar = Xdashbar(1);
+    ybar = Xbar(2); ydashbar = Xdashbar(2);
+    thetabar = Xbar(3); thetadashbar = Xdashbar(3);
+    
+    delRot1 = atan2(ydashbar - ybar, xdashbar - xbar) - thetabar;
+    delTrans = sqrt((xdashbar - xbar)^2 + (ydashbar - ybar)^2);
+    delRot2 = thetadashbar - thetabar - delRot1;
     
     if which_dist == 0 
         delRot1Cap = delRot1 -...
@@ -25,7 +29,7 @@ function Xdash = sample_motion_model_odometry(X, Ut, alphas, which_dist)
             alpha2*delTrans^2);
     elseif which_dist == 1
         delRot1Cap = delRot1 -...
-            sample_triangular_distribution(alpha1*delRot1^2 + ...
+            sample_triangularl_distribution(alpha1*delRot1^2 + ...
             alpha2*delTrans^2);
         delTransCap = delTrans -...
             sample_triangular_distribution(alpha3*delTrans^2 + ...
