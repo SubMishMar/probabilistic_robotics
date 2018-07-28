@@ -23,5 +23,6 @@ function Xt = motion_model(Xt_1, U, alphas)
     yt = yt_1 + cos(thetat_1)*vCap/omegaCap + ...
         - cos(thetat_1 + omegaCap*delT)*vCap/omegaCap;
     thetat = thetat_1 + omegaCap*delT + gammaCap*delT;
+    thetat = atan2(sin(thetat), cos(thetat));
     Xt = [xt; yt; thetat];
 end

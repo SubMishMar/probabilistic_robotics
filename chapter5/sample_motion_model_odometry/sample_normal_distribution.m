@@ -1,5 +1,6 @@
-function sample = sample_normal_distribution(sig)
+function sample = sample_normal_distribution(var)
 % sig: standard deviation
+    sig = sqrt(var);
     if sig < 0
         sig = abs(sig);
     end
