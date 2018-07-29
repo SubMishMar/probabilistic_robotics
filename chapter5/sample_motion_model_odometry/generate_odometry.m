@@ -5,11 +5,28 @@ clear;
 X = zeros(3,1);
 alphas = [1;1;1;1;1;1];
 
-U = [0.5; pi/20];
+
 % figure(1);
 
 odometry = [];
-for i = 1:300
+% U = [1, pi/10];
+n = 10000;
+for i = 1:n
+    if i < n/4
+        U = [1, 0];
+    elseif i == n/4
+        U = [0, 50*pi];
+    elseif i > n/4 && i < 2*n/4
+        U = [1, 0];
+    elseif i == 2*n/4
+        U = [0, 50*pi];
+    elseif i > 2*n/4 && i < 3*n/4
+        U = [1, 0];
+    elseif i == 3*n/4
+        U = [0, 50*pi];
+    else
+        U = [1, 0];
+    end
     odometry = [odometry; X'];
     X = motion_model(X, U, alphas);
 %     figure(1);
@@ -28,3 +45,5 @@ clear alphas;
 clear i
 clear U;
 clear X;
+
+
